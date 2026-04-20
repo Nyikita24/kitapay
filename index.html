@@ -1575,5 +1575,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.querySelector(".kita_aside_cta_btn");
+    const offcanvas = document.getElementById("offcanvasRight");
+
+    offcanvas.addEventListener("show.bs.offcanvas", function () {
+        button.style.display = "none";
+    });
+
+    offcanvas.addEventListener("hidden.bs.offcanvas", function () {
+        button.style.display = "block";
+    });
+});
+</script>
 </body>
 </html>
