@@ -1574,18 +1574,39 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-</script>
-	<script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
-    const button = document.querySelector(".kita_aside_cta_btn");
-    const offcanvas = document.getElementById("offcanvasRight");
+    const toggle = document.getElementById("toggleContact");
+    const panel = document.getElementById("contactPanel");
+    const closeBtn = document.getElementById("closeContact");
+    const sideTab = document.querySelector(".kita-side-tab");
 
-    offcanvas.addEventListener("show.bs.offcanvas", function () {
-        button.style.display = "none";
+    if (!toggle || !panel || !closeBtn || !sideTab) {
+        console.log("Kontakt-Element nicht gefunden");
+        return;
+    }
+
+    toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        panel.classList.add("open");
+        sideTab.classList.add("is-hidden");
     });
 
-    offcanvas.addEventListener("hidden.bs.offcanvas", function () {
-        button.style.display = "block";
+    closeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        panel.classList.remove("open");
+        sideTab.classList.remove("is-hidden");
+    });
+
+    panel.addEventListener("click", function (e) {
+        e.stopPropagation();
+    });
+
+    document.addEventListener("click", function () {
+        panel.classList.remove("open");
+        sideTab.classList.remove("is-hidden");
     });
 });
 </script>
